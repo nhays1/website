@@ -46,6 +46,7 @@
 		padding:5px;
 		margin-left:160px;
 		margin-right:300px;
+		transition: ease-in-out, margin .4s  ease-in-out;
 		}
 		
 		
@@ -134,19 +135,34 @@
 		
 		}
 		</style>
+		<script type="text/javascript">
+		function hidechat(){
+			document.getElementById("chatwindow").style.width = "0px";
+			document.getElementById("showchatbutt").style.visibility ="visible";
+			document.getElementById("featuredgames").style.marginRight="0px";
+		
+				}
+	
+		function showchat(){
+				document.getElementById("chatwindow").style.width = "300px";
+				document.getElementById("showchatbutt").style.visibility ="hidden";
+				document.getElementById("featuredgames").style.marginRight="300px";
+		}
+	
+	</script>
 	</head>
 
 	<body>
 	<!-- start chat html -->
 		
 		<div id="chatbuble">
-			<button class="butt" onclick="somefunction() ">__</button>
+			<button id="showchatbutt" onclick="showchat() ">__</button>
 		
 		
 		 </div>
 		<div id="chatwindow">
 			<div id="chatoptions">
-			<button onclick="somefunction() ">__</button>
+			<button id="hidechatbutt" onclick="hidechat() ">__</button>
 				
 				
 			</div>
