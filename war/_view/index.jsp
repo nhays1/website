@@ -67,6 +67,27 @@
 		 font-size: 400%;
 		
 		}
+		#log{
+		float: right;
+		margin-right:300px;
+		transition: ease-in-out, margin .4s  ease-in-out;
+		}
+		
+		#loginwindow{
+		heiht: 300px;
+		width: 300px;
+		background-color: white;
+		position: fixed;
+		right:50%;
+		top:50%;
+		visibility: hidden;
+		}
+		
+		
+		#canclelog{
+		float: right;
+		
+		}
 		
 		<!-- start chat style -->
 		
@@ -148,12 +169,42 @@
 				document.getElementById("showchatbutt").style.visibility ="hidden";
 				document.getElementById("featuredgames").style.marginRight="300px";
 		}
-	
+		function logclick(){
+			
+			document.getElementById("loginwindow").style.visibility ="visible";
+		}
+		function canclelog(){
+			document.getElementById("uzer").value="";
+			document.getElementById("pass").value="";
+			document.getElementById("loginwindow").style.visibility ="hidden";
+		
+		}
+		
 	</script>
 	</head>
 
 	<body>
 	<!-- start chat html -->
+		
+		
+		<div id="loginwindow">
+			<table>
+					<tr>
+						<td class="label">username:</td>
+					<td><input  id="uzer" type="text" name="username" size="20" value="${ model.first     }" /></td>
+					</tr>
+					<tr>
+						<td class="label">Password:</td>
+					<td><input id="pass" type="password" name="password" size="20" value="${  model.first   }" /></td>
+                    
+					</tr>
+                
+				</table>
+			<input type="Submit" name="submit" value="login">
+			
+			<button id="canclelog"  onclick="canclelog()" >cancle</button>
+		</div>
+		
 		
 		<div id="chatbuble">
 			<button id="showchatbutt" onclick="showchat() ">__</button>
