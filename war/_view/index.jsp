@@ -72,6 +72,18 @@
 		margin-right:300px;
 		transition: ease-in-out, margin .4s  ease-in-out;
 		}
+		#acountopt{
+		float: right;
+		
+		}
+		#acountoptions{
+		float: right;
+		height: 0px;
+		width:200px;
+		background-color: black;
+		transition: ease-in-out, height .4s  ease-in-out;
+		}
+		
 		
 		#loginwindow{
 		heiht: 300px;
@@ -87,6 +99,16 @@
 		#canclelog{
 		float: right;
 		
+		}
+		
+		#loginoverlay{
+		height: 100%;
+		width:100%;
+		background-color:rgba(128,128,128,0.5);
+		position: fixed;
+		left:0;
+		top:0;
+		visibility: hidden;
 		}
 		
 		<!-- start chat style -->
@@ -161,54 +183,58 @@
 			document.getElementById("chatwindow").style.width = "0px";
 			document.getElementById("showchatbutt").style.visibility ="visible";
 			document.getElementById("featuredgames").style.marginRight="0px";
-		
+			document.getElementById("log").style.marginRight="0px";
+			
 				}
 	
 		function showchat(){
-				document.getElementById("chatwindow").style.width = "300px";
-				document.getElementById("showchatbutt").style.visibility ="hidden";
-				document.getElementById("featuredgames").style.marginRight="300px";
+			document.getElementById("chatwindow").style.width = "300px";
+			document.getElementById("showchatbutt").style.visibility ="hidden";
+			document.getElementById("featuredgames").style.marginRight="300px";
+			document.getElementById("log").style.marginRight="260px";
+			
 		}
 		function logclick(){
-			
 			document.getElementById("loginwindow").style.visibility ="visible";
+			document.getElementById("loginoverlay").style.visibility ="visible";
+			
 		}
 		function canclelog(){
 			document.getElementById("uzer").value="";
 			document.getElementById("pass").value="";
 			document.getElementById("loginwindow").style.visibility ="hidden";
-		
+			document.getElementById("loginoverlay").style.visibility ="hidden";
+		}
+		function acount(){
+			document.getElementById("acountopt").style.visibility="hidden";
+			document.getElementById("acountoptions").style.visibility="visible";
+			document.getElementById("acountoptions").style.height="200px";
+			document.getElementById("cancleacountopt").style.visibility="visible";
+		}
+		function closeacount(){
+			document.getElementById("acountopt").style.visibility="visible";
+		document.getElementById("acountoptions").style.visibility="hidden";
+			document.getElementById("acountoptions").style.height="0px";
+			document.getElementById("cancleacountopt").style.visibility="hidden";
 		}
 		
 	</script>
 	</head>
 
 	<body>
-	<!-- start chat html -->
 		
-		
-		<div id="loginwindow">
-			<table>
-					<tr>
-						<td class="label">username:</td>
-					<td><input  id="uzer" type="text" name="username" size="20" value="${ model.first     }" /></td>
-					</tr>
-					<tr>
-						<td class="label">Password:</td>
-					<td><input id="pass" type="password" name="password" size="20" value="${  model.first   }" /></td>
-                    
-					</tr>
-                
-				</table>
-			<input type="Submit" name="submit" value="login">
-			
-			<button id="canclelog"  onclick="canclelog()" >cancle</button>
-		</div>
-		
-		
+		<!-- start chat html -->
 		<div id="chatbuble">
-			<button id="showchatbutt" onclick="showchat() ">__</button>
 		
+			<button id="showchatbutt" onclick="showchat() ">__</button>
+			<button id="log"  onclick="logclick()" >login</button>
+			<button id="acountopt"  onclick="acount()" >acount options</button>
+			<div id= "acountoptions">
+				
+				<button id="cancleacountopt"  onclick="closeacount()" >acount options</button>
+			</div>
+			
+			
 		
 		 </div>
 		<div id="chatwindow">
@@ -336,7 +362,7 @@
 		<div>
                <form action="${pageContext.servletContext.contextPath}/multiplyNumbers" method="get">
 
-			<input type="Submit" name="submit" value="Multiply Numbers!"><img src="picture" />
+			<input type="Submit" name="submit" value="Multiply Numbers!">
 		</form>
         
         </div>
@@ -356,11 +382,40 @@
 				<input name="startGame" type="submit" value="guessing game" />
 			
 		
-		</form>
+			</form>
 
         </div>
         
         </div>
+        
+        
+        <form action="${pageContext.servletContext.contextPath}/userinfo" method="get">
+
+			<input type="Submit" name="submit" value="userinfo">
+		</form>
+        
+        <div id="loginoverlay"  onclick="canclelog()" >
+        
+        
+        </div>
+        
+        <div id="loginwindow">
+			<table>
+					<tr>
+						<td class="label">username:</td>
+					<td><input  id="uzer" type="text" name="username" size="20" value="${ model.first     }" /></td>
+					</tr>
+					<tr>
+						<td class="label">Password:</td>
+					<td><input id="pass" type="password" name="password" size="20" value="${  model.first   }" /></td>
+                    
+					</tr>
+                
+				</table>
+			<input type="Submit" name="submit" value="login">
+			
+			<button id="canclelog"  onclick="canclelog()" >cancle</button>
+		</div>
 	</body>
 </html>
 
