@@ -4,23 +4,26 @@
 
 <html>
 	<head>
-		<title>acount information</title>
+		<title>Game</title>
 		<style type="text/css">
-	
+		.error {
+			color: red;
+		}
 		
-
+	
 		body {
 		background-color: brown;
 		
 		}
-	
+		
+		
 		
 		</style>
 	</head>
 
 	<body>
 	
-
+	
 	
 	
 	
